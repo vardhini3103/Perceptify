@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perceptify</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+
+  <body>
+    <!-- navbar sections starts  -->
+    <header class="header">
+      <div class="logo"></div>
+
+      <nav class="navbar">
+        <a href="#home">Home</a>
+        <a href="#features">Features</a>
+      </nav>
+
+      <div class="fas fa-bars" id="menu-btn"></div>
+    </header>
+    <!-- navbar sections starts  -->
+
+    <!-- home section stars  -->
+
+    <section class="home" id="home">
+      <div class="content">
+        <h1>Perceptify 👁️</h1>
+        <p>
+          Empowering Blind Individuals with Real-Time Environmental Awareness
+        </p>
+        <a href="#" class="home-btn" onclick="startAssistant()"
+          >Run Assistant</a
+        >
+      </div>
+
+      <div class="image">
+        <a href="https://imgur.com/a/BtUwTYe"></a>
+        <div class="iris">
+          <img
+            src="{{ url_for('static', filename='images/iris.jpeg') }}"
+            alt="iris-image"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- home section ends -->
+
+    <!-- features sectin starts  -->
+
+    <section class="features" id="features">
+      <div class="heading">
+        <h1>Features</h1>
+      </div>
+
+      <div class="row">
+        <!-- 1 Tab  -->
+        <div class="image">
+          <img
+            src="{{ url_for('static', filename='images/Emotion.jpeg') }}"
+            alt="illustration-features-tab-1"
+          />
+        </div>
+
+        <div class="content">
+          <h1>Emotion Detection</h1>
+          <p>
+            With our app, you'll be able to understand people's feelings and
+            emotions by simply pointing your device towards them, enhancing your
+            awareness of the environment
+          </p>
+          <a href="#" class="all-btn">more info</a>
+        </div>
+
+        <!-- 1 Tab  -->
+
+        <!-- 2 Tab  -->
+        <div class="content">
+          <h1>Object Detection</h1>
+          <p>
+            Stay safe while navigating with our app's ability to estimate
+            distances to nearby objects, helping you avoid obstacles and move
+            confidently.
+          </p>
+          <a href="#" class="all-btn">more info</a>
+        </div>
+
+        <div class="image">
+          <img
+            src="{{ url_for('static', filename='images/illustration-features-tab-2.svg') }}"
+            alt="illustration-features-tab-2"
+          />
+        </div>
+
+        <!-- 2 Tab  -->
+
+        <div class="image">
+          <img
+            src="{{ url_for('static', filename='images/illustration-features-tab-3.svg') }}"
+            alt="illustration-features-tab-3"
+          />
+        </div>
+
+        <div class="content">
+          <h1>Multi-Lingual Support</h1>
+          <p>
+            Our app speaks your language! Enjoy the convenience of using our
+            service in multiple languages, ensuring accessibility for users
+            worldwide
+          </p>
+          <a href="#" class="all-btn">more info</a>
+        </div>
+
+        <!-- 3 Tab  -->
+      </div>
+    </section>
+
+    <!-- features sectin ends -->
+
+    <!-- footer section starts  -->
+
+    <section class="footer" id="footer">
+      <div class="credit">
+        created by
+        <a
+          href="https://www.linkedin.com/in/harshavardhini-g-9929a6278"
+          target="_blank"
+          ><span>Harshavardhini Gokaraju</span></a
+        >
+      </div>
+    </section>
+
+    <!-- footer section ends -->
+
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+    <script>
+      function startAssistant() {
+        // Add your code here to start the Blind Assistant
+        // For example:
+        console.log("Starting Blind Assistant...");
+        // You can make an AJAX request to your Flask server to trigger the Blind Assistant
+        // Here's a sample AJAX request using fetch:
+        fetch("/start_program", { method: "POST" })
+          .then((response) => {
+            if (response.ok) {
+              console.log("Blind Assistant started successfully!");
+              // Redirect the user to the assistant page
+              window.location.href = "/assistant";
+            } else {
+              console.error("Failed to start Blind Assistant");
+            }
+          })
+          .catch((error) => {
+            console.error("Error starting Blind Assistant:", error);
+          });
+      }
+    </script>
+  </body>
+</html>
