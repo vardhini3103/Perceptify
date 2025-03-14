@@ -78,8 +78,19 @@ class BlindAssistant:
 
         
         # Configure Google Generative AI
-        self.api_key = "GEMINI-API-KEY"  # Replace with your API key
+        import os
+
+class GeminiClient:
+    def __init__(self):
+        # Get the API key from the environment variable
+        self.api_key = os.getenv("GEMINI_API_KEY")
+
+        if not self.api_key:
+            raise ValueError("Missing GEMINI_API_KEY environment variable")
+
+        # Configure Google Generative AI
         genai.configure(api_key=self.api_key)
+
         generation_config = {
             "temperature": 0.9,
             "top_p": 1,
@@ -90,6 +101,10 @@ class BlindAssistant:
 
         # Create a thread pool executor
         self.executor = ThreadPoolExecutor(max_workers=1)
+
+    def call_api(self, prompt):
+        print(f"Calling Gemini API with prompt: {prompt}")
+
         
         
         
@@ -135,7 +150,7 @@ class BlindAssistant:
         tts.save(tts_path)
 
     # Use a media player to play the speech
-        subprocess.run(["wmic", "process", "call", "create", '"wmplayer.exe /play /close ' + tts_path + '"'])
+        subprocess.run(["wmic", "process", "call", "create", f'wmplayer.exe /play /close {tts_path}'])
 
 
     def analyze_image(self, img):
