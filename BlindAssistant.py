@@ -78,7 +78,7 @@ class BlindAssistant:
 
         
         # Configure Google Generative AI
-        self.api_key = 'AIzaSyAHR1jdjWT1CF3rGoNhyRmJbEWjbi5GMMw'  # Replace with your API key
+        self.api_key = "GEMINI-API-KEY"  # Replace with your API key
         genai.configure(api_key=self.api_key)
         generation_config = {
             "temperature": 0.9,
